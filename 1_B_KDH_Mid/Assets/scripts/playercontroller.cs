@@ -18,6 +18,8 @@ public class playercontroller : MonoBehaviour
     private Vector2 moveInput; 
     private bool isGrounded;
 
+    private bool isGiant = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -86,6 +88,13 @@ public class playercontroller : MonoBehaviour
         {
             var levelObj = collision.GetComponent<LevelObject>();
             if (levelObj != null) levelObj.MoveToNextLevel();
+        }
+
+        // Àû  ÇÇ°Ý
+
+        if (collision.CompareTag("enemy"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
